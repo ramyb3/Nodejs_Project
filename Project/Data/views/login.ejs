@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h1>Movies - Subscriptions Web Site</h1>
+
+        <h2>Login Page</h2>
+        
+        <form action="/login/main" method="POST">
+                   
+            User Name: <input type="text" name="user"><br/><br/>
+            Password: <input type="password" name="psw"><br/><br/>
+            <input type="submit" value="Login"><br/><br/>
+       
+        </form>
+
+        <a href="/login/create"> CLICK ME IF YOU A NEW USER</a>
+
+        <% if (msg != undefined) {%>
+            <script>
+            
+                alert("<%=msg%>")
+            
+            </script>    
+        <% } %>
+            
+    </body>
+</html>

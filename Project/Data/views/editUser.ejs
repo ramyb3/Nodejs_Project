@@ -1,0 +1,133 @@
+<html>
+    <body>
+        <h1>Movies - Subscriptions Web Site</h1>
+
+        <big><b> Connected User: <%= name %> </b></big><br><br>
+
+        <button> <a href="/login/movies">Movies</a></button>
+        <button> <a href="/login/subscriptions">Subscriptions</a></button>
+        <button> <a href="/login/managUsers">Users Management</a></button>
+        <button> <a href="/login">Logout</a></button> <br><br>
+<!----------------------------------------------------------------------------------------------------->
+        <h2>Edit User Page: <%=data.firstName%> <%=data.lastName%></h2>
+
+        <script>
+
+            function checkSubs() //check if 'View Subscriptions' off
+            {
+                document.getElementById("ID1").checked = true;       
+            }
+
+            function checkMovies() //check if 'View Movies' off
+            {
+                document.getElementById("ID2").checked = true;       
+            }
+
+            function clearSubs() //check if 'View Subscriptions' on
+            {
+                document.getElementById("ID3").checked = false;
+                document.getElementById("ID4").checked = false;
+                document.getElementById("ID5").checked = false;
+            }
+
+            function clearMovies() //check if 'View Movies' on
+            {
+                document.getElementById("ID6").checked = false;
+                document.getElementById("ID7").checked = false; 
+                document.getElementById("ID8").checked = false;        
+            }
+
+        </script>
+
+        <form action="/login/managUsers/users/updated" method="POST">
+            
+            <input type="hidden" name="id" value="<%=data.id%>">
+            <input type="hidden" name="date" value="<%=data.date%>">
+            <b>First Name:</b> <input type="text" name="Fname" value="<%=data.firstName%>" required> <br>
+            <b>Last Name:</b> <input type="text" name="Lname" value="<%=data.lastName%>" required> <br>
+            <b>User Name:</b> <input type="text" name="Uname" value="<%=data.user%>" required> <br>
+            <b>Session Timeout (Minutes):</b> <input type="number" name="session" value="<%=data.session%>" min="1" required> <br>
+            <b>Created Date:</b> <%=data.date%> <br>
+            <b>Permissions:</b> <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("View Subscriptions")) { %>
+                <input type="checkbox" id="ID1" onclick="clearSubs()" name="VS" checked> View Subscriptions
+            <% } %>
+    
+            <% if(!data.perm.includes("View Subscriptions")) { %>
+                <input type="checkbox" id="ID1" onclick="clearSubs()" name="VS"> View Subscriptions
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("Create Subscriptions")) { %>
+                <input type="checkbox" id="ID3" onclick="checkSubs()" name="CS" checked> Create Subscriptions
+            <% } %>
+    
+            <% if(!data.perm.includes("Create Subscriptions")) { %>
+                <input type="checkbox" id="ID3" onclick="checkSubs()" name="CS"> Create Subscriptions
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("Update Subscriptions")) { %>
+                <input type="checkbox" id="ID4" onclick="checkSubs()" name="US" checked> Update Subscriptions
+            <% } %>
+    
+            <% if(!data.perm.includes("Update Subscriptions")) { %>
+                <input type="checkbox" id="ID4" onclick="checkSubs()" name="US"> Update Subscriptions
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("Delete Subscriptions")) { %>
+                <input type="checkbox" id="ID5" onclick="checkSubs()" name="DS" checked> Delete Subscriptions 
+            <% } %>
+    
+            <% if(!data.perm.includes("Delete Subscriptions")) { %>
+                <input type="checkbox" id="ID5" onclick="checkSubs()" name="DS"> Delete Subscriptions 
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("View Movies")) { %>
+                <input type="checkbox" id="ID2" onclick="clearMovies()" name="VM" checked> View Movies
+            <% } %>
+    
+            <% if(!data.perm.includes("View Movies")) { %>
+                <input type="checkbox" id="ID2" onclick="clearMovies()" name="VM"> View Movies
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("Create Movies")) { %>
+                <input type="checkbox" id="ID6" onclick="checkMovies()" name="CM" checked> Create Movies
+            <% } %>
+    
+            <% if(!data.perm.includes("Create Moviess")) { %>
+                <input type="checkbox" id="ID6" onclick="checkMovies()" name="CM"> Create Movies
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("Update Movies")) { %>
+                <input type="checkbox" id="ID7" onclick="checkMovies()" name="UM" checked> Update Movies
+            <% } %>
+    
+            <% if(!data.perm.includes("Update Movies")) { %>
+                <input type="checkbox" id="ID7" onclick="checkMovies()" name="UM"> Update Movies
+            <% } %>
+            <br>
+            <!----------------------------------------------------------------------------------------->
+            <% if(data.perm.includes("Delete Movies")) { %>
+                <input type="checkbox" id="ID8" onclick="checkMovies()" name="DM" checked> Delete Movies
+            <% } %>
+    
+            <% if(!data.perm.includes("Delete Movies")) { %>
+                <input type="checkbox" id="ID8" onclick="checkMovies()" name="DM"> Delete Movies
+            <% } %>
+            <!----------------------------------------------------------------------------------------->
+            <br><br>
+
+            <input type="submit" value="Update"> 
+
+            <button> <a href="/login/managUsers">Cancel</a></button>
+
+        </form> 
+
+    </body>
+</html>
