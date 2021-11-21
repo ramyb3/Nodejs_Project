@@ -1,0 +1,228 @@
+<html>
+    <body>
+        <h1>Movies - Subscriptions Web Site</h1>
+
+        <big><b> Connected User: <%= name %> </b></big><br><br>
+
+        <% if(perm.includes("View Movies")) { %>
+
+            <button> <a href="/movies">Movies</a></button>
+
+        <% } %>
+
+        <% if(perm.includes("View Subscriptions")) { %>
+
+            <button> <a href="/subscriptions">Subscriptions</a></button>
+
+        <% } %> 
+
+        <% if(name=="admin") { %>
+        
+            <button> <a href="/managUsers">Users Management</a></button>
+
+        <% } %>
+
+        <button> <a href="/">Logout</a></button> <br><br>
+<!----------------------------------------------------------------------------------------------------->
+        <h2>Edit Movie Page</h2>
+
+        <form action="/movies/updated" method="POST">
+
+            <input type="hidden" name="id" value="<%=movie._id%>">
+
+            Enter the name of the movie: <input type="text" value="<%=movie.Name%>" name="name" required><br><br>
+
+            Select the genres of the movie: <br>
+            <select multiple="multiple" name="genres" required>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Action") ) { %>
+                    <option value="Action" selected>Action</option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Action") ) { %>
+                    <option value="Action" >Action</option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Adventure") ) { %>
+                    <option value="Adventure" selected>Adventure </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Adventure") ) { %>
+                    <option value="Adventure" >Adventure </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Anime") ) { %>
+                    <option value="Anime" selected>Anime </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Anime") ) { %>
+                    <option value="Anime" >Anime </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Comedy") ) { %>
+                    <option value="Comedy" selected>Comedy </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Comedy") ) { %>
+                    <option value="Comedy" >Comedy </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Crime") ) { %>
+                    <option value="Crime" selected>Crime </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Crime") ) { %>
+                    <option value="Crime" >Crime </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Drama") ) { %>
+                    <option value="Drama" selected>Drama</option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Drama") ) { %>
+                    <option value="Drama" >Drama</option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Espionage") ) { %>
+                    <option value="Espionage" selected>Espionage </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Espionage") ) { %>
+                    <option value="Espionage" >Espionage </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Family") ) { %>
+                    <option value="Family" selected>Family </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Family") ) { %>
+                    <option value="Family" >Family </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Fantasy") ) { %>
+                    <option value="Fantasy" selected>Fantasy </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Fantasy") ) { %>
+                    <option value="Fantasy" >Fantasy </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("History") ) { %>
+                    <option value="History" selected>History </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("History") ) { %>
+                    <option value="History" >History </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Horror") ) { %>
+                    <option value="Horror" selected>Horror </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Horror") ) { %>
+                    <option value="Horror" >Horror </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Legal") ) { %>
+                    <option value="Legal" selected> Legal </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Legal") ) { %>
+                    <option value="Legal" > Legal </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Medical") ) { %>
+                    <option value="Medical" selected>Medical </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Medical") ) { %>
+                    <option value="Medical" >Medical </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Music") ) { %>
+                    <option value="Music" selected>Music </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Music") ) { %>
+                    <option value="Music" >Music </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Mystery") ) { %>
+                    <option value="Mystery" selected>Mystery </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Mystery") ) { %>
+                    <option value="Mystery" >Mystery </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Romance") ) { %>
+                    <option value="Romance" selected>Romance </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Romance") ) { %>
+                    <option value="Romance" >Romance </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Science-Fiction") ) { %>
+                    <option value="Science-Fiction" selected>Science-Fiction</option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Science-Fiction") ) { %>
+                    <option value="Science-Fiction" >Science-Fiction</option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Sports") ) { %>
+                    <option value="Sports" selected>Sports</option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Sports") ) { %>
+                    <option value="Sports" >Sports</option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Supernatural") ) { %>
+                    <option value="Supernatural" selected>Supernatural </option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Supernatural") ) { %>
+                    <option value="Supernatural" >Supernatural </option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Thriller") ) { %>
+                    <option value="Thriller" selected>Thriller</option>
+                <% } %>
+
+                <% if (!movie.Genres.includes("Thriller") ) { %>
+                    <option value="Thriller" >Thriller</option>
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("War") ) { %>
+                    <option value="War" selected>War</option>    
+                <% } %>
+
+                <% if (!movie.Genres.includes("War") ) { %>
+                    <option value="War">War</option>    
+                <% } %>
+                <!------------------------------------------------------------------------------>
+                <% if (movie.Genres.includes("Western") ) { %>
+                    <option value="Western" selected>Western</option>    
+                <% } %>
+
+                <% if (!movie.Genres.includes("Western") ) { %>
+                    <option value="Western">Western</option>    
+                <% } %>
+                <!------------------------------------------------------------------------------>
+
+            </select><br><br>
+
+            Enter the movie image link: <input type="url" value="<%=movie.Image%>" name="image"><br><br>
+
+            Enter the date the movie premiered: <input type="date" value="<%=date%>" name="date" required><br><br>
+
+            <input type="submit" value="Update"> 
+
+            <button> <a href="/movies">Cancel</a></button>
+
+        </form>
+
+    </body>
+</html>

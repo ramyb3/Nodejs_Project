@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <h1>Movies - Subscriptions Web Site</h1>
+
+        <big><b> Connected User: <%= name %> </b></big><br><br>
+
+        <% if(perm.includes("View Movies")) { %>
+
+            <button> <a href="/movies">Movies</a></button>
+
+        <% } %>
+
+        <% if(perm.includes("View Subscriptions")) { %>
+
+            <button> <a href="/subscriptions">Subscriptions</a></button>
+
+        <% } %> 
+
+        <% if(name=="admin") { %>
+        
+            <button> <a href="/managUsers">Users Management</a></button>
+
+        <% } %>
+
+        <button> <a href="/">Logout</a></button> <br><br>
+<!----------------------------------------------------------------------------------------------------->
+        <h2>Add Member Page</h2>
+
+        <button> <a href="/subscriptions">All Members</a></button>
+        <button> <a href="/subscription/addMember">Add Member</a></button><br><br>
+
+        <form action="/subscriptions/addMember/added" method="POST">
+
+            Enter the name of the member: <input type="text" name="name" required><br><br>
+
+            Enter the member's email: <input type="email" name="email" required><br><br>
+
+            Enter the member's city: <input type="text" name="city" required><br><br>
+
+            <input type="submit" value="Save"> 
+
+            <button> <a href="/subscriptions">Cancel</a></button>
+
+        </form>
+
+    </body>
+</html>
