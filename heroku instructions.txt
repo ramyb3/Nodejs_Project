@@ -1,3 +1,7 @@
+// based on:
+// https://medium.com/softup-technologies/how-to-deploy-a-monorepo-to-multiple-heroku-apps-using-github-actions-65e87dc27878
+// https://medium.com/inato/how-to-setup-heroku-with-yarn-workspaces-d8eac0db0256
+
 // 1.create the heroku apps
 // the Data Api
 heroku create data-api-dyx --remote heroku-data-api-ramyb3
