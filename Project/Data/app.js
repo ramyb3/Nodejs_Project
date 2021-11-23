@@ -57,10 +57,10 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
 
-// const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 
-// app.listen(PORT, () => {
-//   console.log('https Server listening on port: ' + PORT, { port: PORT, env: process.env.NODE_ENV });
-// });
+app.listen(PORT, () => {
+  console.log('https Server listening on port: ' + PORT, { port: PORT, env: process.env.NODE_ENV });
+});
