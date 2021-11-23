@@ -1,1 +1,1 @@
-web: cd ./Project/Data && npm start
+web: sh -c 'cd ./Project/Data && node app.js'
