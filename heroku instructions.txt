@@ -1,0 +1,30 @@
+// 1.create the heroku apps
+// the Data Api
+heroku create data-api-dyx --remote heroku-data-api-ramyb3
+// the WebServices
+heroku create services-api-fkx --remote heroku-services-api-ramyb3
+
+//logon to heroku and add env vars in both apps.
+// the data needs the url of webservices as a var!
+
+// 2.add the following to support 
+// the multiple services monorepo build in heroku and node js build
+// for monorepo
+heroku buildpacks:add -a data-api-ramyb3 heroku-community/multi-procfile
+heroku buildpacks:add -a services-api-ramyb3 heroku-community/multi-procfile
+// for nodejs build
+heroku buildpacks:add -a services-api-ramyb3 --index 1 heroku/nodejs
+heroku buildpacks:add -a data-api-ramyb3 --index 1 heroku/nodejs
+
+//make a Procfile under Data and WebServices if not exists 
+// this is how the init script klnows where to boot from on each app
+// web: cd ./Project/Data && npm i && node app.js
+// web: cd ./Project/WebServices && npm i && node app.js
+
+// this is instructions for each app where to find the Procfile
+heroku config:set -a data-api-dyx PROCFILE=Project/Data/Procfile
+heroku config:set -a services-api-fkx PROCFILE=Project/WebServices/Procfile
+
+// push respectively to each app
+ git push --set-upstream heroku-data-api-ramyb3 main
+ git push --set-upstream heroku-services-api-ramyb3 main
