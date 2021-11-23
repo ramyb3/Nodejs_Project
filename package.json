@@ -3,7 +3,7 @@
   "name": "nodejs-project",
   "version": "0.1.0",
   "scripts": {
-    "start": "concurrently \"cd Project/Data && npm run start\" \"cd Project/WebServices && npm run start\""
+    "start": "npm start"
   },
   "engines": {
     "node": "^14.17"
