@@ -18,14 +18,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const session= require('express-session');
+const session = require('express-session');
 
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/login');
 
 var app = express();
 
-app.use(session({secret: process.env.SESSION_SECRET}));
+app.use(session({ secret: process.env.SESSION_SECRET }));
 
 require('./configs/database');
 
@@ -42,12 +42,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -57,4 +57,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log('https Server listening on port: ' + PORT, { port: PORT, env: process.env.NODE_ENV });
+});

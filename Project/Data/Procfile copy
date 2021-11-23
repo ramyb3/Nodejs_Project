@@ -1,0 +1,1 @@
+web: sh -c 'cd ./Project/Data && node ./bin/www'
