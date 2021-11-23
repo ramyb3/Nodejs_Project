@@ -1,3 +1,17 @@
+const dotenv = require('dotenv')
+const result = dotenv.config()
+console.log("🚀 ~ file: main.js ~ line 3 ~ result", result)
+
+
+const IS_PROD_ENV = process.env.NODE_ENV === 'production'
+console.log("🚀 ~ file: server.js ~ line 4 ~ IS_PROD_ENV", process.env.NODE_ENV, IS_PROD_ENV)
+
+if (IS_PROD_ENV) {
+  if (result.error) {
+    throw result.error
+  }
+}
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,12 +20,12 @@ var logger = require('morgan');
 
 const session= require('express-session');
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/login');
 
 var app = express();
 
-app.use(session({secret: 'MySecret'}));
+app.use(session({secret: process.env.SESSION_SECRET}));
 
 require('./configs/database');
 
