@@ -1,1 +1,1 @@
-web: npm start ./bin/www
+web: sh -c 'cd ./Project/Data && npm start'
