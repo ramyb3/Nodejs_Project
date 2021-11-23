@@ -6,7 +6,7 @@ console.log("🚀 ~ file: main.js ~ line 3 ~ result", result)
 const IS_PROD_ENV = process.env.NODE_ENV === 'production'
 console.log("🚀 ~ file: server.js ~ line 4 ~ IS_PROD_ENV", process.env.NODE_ENV, IS_PROD_ENV)
 
-if (IS_PROD_ENV) {
+if (!IS_PROD_ENV) {
   if (result.error) {
     throw result.error
   }
