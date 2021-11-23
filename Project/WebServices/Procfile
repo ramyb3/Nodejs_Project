@@ -1,2 +1,2 @@
-web: sh -c 'cd ./Project/WebServices && npm start'
+npm start
 
