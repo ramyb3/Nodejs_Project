@@ -1,8 +1,6 @@
-const axios= require('axios');
+const axios = require('axios');
 
-exports.getMembers = async function()
-{
-    let resp = await axios.get("https://jsonplaceholder.typicode.com/users");
-    
+exports.getMembers = async function () {
+    const resp = await axios.get(process.env.USERS_URI);
     return resp.data;
 }
