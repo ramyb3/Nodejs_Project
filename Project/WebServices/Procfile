@@ -1,1 +1,1 @@
-web: cd ./Project/WebServices && node app.js
+web: cd ./Project/WebServices && npm i && node app.js

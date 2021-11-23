@@ -1,1 +1,1 @@
-web: cd ./Project/Data && node app.js
+web: cd ./Project/Data && npm i && node app.js
