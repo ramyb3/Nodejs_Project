@@ -1,17 +1,31 @@
+const dotenv = require('dotenv')
+const result = dotenv.config()
+console.log("🚀 ~ file: main.js ~ line 3 ~ result", result)
+
+
+const IS_PROD_ENV = process.env.NODE_ENV === 'production'
+console.log("🚀 ~ file: server.js ~ line 4 ~ IS_PROD_ENV", process.env.NODE_ENV, IS_PROD_ENV)
+
+if (!IS_PROD_ENV) {
+  if (result.error) {
+    throw result.error
+  }
+}
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const session= require('express-session');
+const session = require('express-session');
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/login');
 
 var app = express();
 
-app.use(session({secret: 'MySecret'}));
+app.use(session({ secret: process.env.SESSION_SECRET }));
 
 require('./configs/database');
 
@@ -28,12 +42,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -43,4 +57,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log('https Server listening on port: ' + PORT, { port: PORT, env: process.env.NODE_ENV });
+});
+
